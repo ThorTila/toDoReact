@@ -7,7 +7,7 @@ const TodoList = (props) => {
         <div className={style.TodoList}>
             <h2 className={style.ListTitle}>List:</h2>
             <ul className={style.List}>
-                <Todo list={props.list} remove={props.remove}/>
+            {props.list.length === 0 ? 'Nothing to do!!!' : <Todo list={props.list} remove={props.remove}/>}
             </ul>
         </div>
     );

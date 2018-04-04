@@ -22,7 +22,6 @@ class App extends React.Component {
             id: uuid.v4(),
             text: val
         };
-        console.log(todo);
         const data = [...this.state.data, todo];
         this.setState({data});
     }
