@@ -2,3 +2,18 @@
     color: red;
     font-size: 40px;
 }
+.TodoList {
+    text-align: center;
+}
+.ListTitle {
+    color: blue;
+}
+.List {
+    background: pink;
+    list-style-type: none;
+    padding: 20px;
+    text-align: left;
+}
+.ListItem {
+    background: yellow;
+}
