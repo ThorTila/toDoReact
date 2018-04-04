@@ -31,10 +31,11 @@ class App extends React.Component {
         return (
             <div className={style.TodoApp}>
                 <Title data={this.state.data}/>
-                <TodoList list={this.state.data}/>
+                <TodoList list={this.state.data} remove={(id) => this.removeTodo(id)}/>
             </div>
         );
     }
 }
+
 
 export default App;
