@@ -21,6 +21,7 @@ class App extends React.Component {
 
     addTodo(e){
         e.preventDefault();
+        if (!this.state.task) {return;}
         const todo = {
             id: uuid.v4(),
             text: this.state.task
