@@ -9,6 +9,7 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            task: '',
             data: [
                 {text: 'something', id: 2},
                 {text: 'written', id: 1},
@@ -17,35 +18,40 @@ class App extends React.Component {
             ]
         };
     }
-    addTodo(val){
+
+    addTodo(e){
+        e.preventDefault();
         const todo = {
             id: uuid.v4(),
-            text: val
+            text: this.state.task
         };
         const data = [...this.state.data, todo];
-        this.setState({data});
+        this.setState({
+            data,
+            task: ''
+        });
     }
+
     removeTodo(id) {
         const remainder = this.state.data.filter(todo => todo.id !== id);
         this.setState({data: remainder});
     }
+
     handleChange(e) {
-        if (e.key == 'Enter') {
-        e.preventDefault();
-        this.addTodo(e.target.value);
-        e.target.value = '';
-        }
+        this.setState ({
+            task: e.target.value
+        });
     }
+
     render() {
         return (
             <div className={style.TodoApp}>
                 <Title data={this.state.data}/>
-                <TodoForm add={(event) => this.handleChange(event)} submittedText={this.state.data.text}/>
+                <TodoForm add={(event) => this.addTodo(event)} handle={event => this.handleChange(event)} submittedText={this.state.task}/>
                 <TodoList list={this.state.data} remove={(id) => this.removeTodo(id)}/>
             </div>
         );
     }
 }
-
 
 export default App;

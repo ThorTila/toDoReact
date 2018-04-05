@@ -1,12 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:global(#app) {
+    width: 100vw;
+    background-color: #778ca3;
+}
 .TodoApp {
-    background-color: lightgreen;
-    color: #222;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     align-content: center;
-    width: 100vw;
-    height: 100vh;
+    max-width: 1200px;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    font-weight: bold;
 }

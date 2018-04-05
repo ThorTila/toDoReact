@@ -23,7 +23,6 @@ const path = require('path'),
     }
 
 module.exports = {
-    watch: false,
     entry: [
          'react-hot-loader/patch',
          './src/index.js'
@@ -36,7 +35,8 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                loader: "babel-loader"
+                loader: "babel-loader",
+                exclude: /node_modules/
             },
             {
                 test: /\.css$/,
