@@ -4,6 +4,7 @@ const path = require('path'),
     UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
     OptimizeJsPlugin = require('optimize-js-plugin'),
     env = process.env.NODE_ENV || 'development';
+
     let plugins = [
         new HtmlWebpackPlugin({
             template: 'src/index.html',
@@ -12,7 +13,6 @@ const path = require('path'),
         })
     ];
 
-    console.log('NODE_ENV:', env);
     if (env === 'production') {
         plugins.push(
             new webpack.optimize.UglifyJsPlugin(),
@@ -20,9 +20,14 @@ const path = require('path'),
                 sourceMap: false
             })
         );
+    } else {
+        plugins.push(new webpack.HotModuleReplacementPlugin());
     }
 
 module.exports = {
+    devServer: {
+        hot: true
+    },
     entry: [
          'react-hot-loader/patch',
          './src/index.js'
